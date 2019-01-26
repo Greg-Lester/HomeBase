@@ -3,9 +3,9 @@ using System.Collections;
 
 public class CannonShoot : MonoBehaviour
 {
-    public GameObject ProjectilePrefab;
+    public Bullet ProjectilePrefab;
     public CannonSFX script;
-
+    public ImpactSFX impactSfx;
 
     // Use this for initialization
     void Start()
@@ -16,8 +16,9 @@ public class CannonShoot : MonoBehaviour
     {
         float x = this.transform.position.x;
         float y = this.transform.position.y;
-        GameObject cannonball = Instantiate(ProjectilePrefab, new Vector3(x, y, 0), Quaternion.identity);
-        cannonball.layer = layer_id;
+        Bullet cannonball = Instantiate(ProjectilePrefab, new Vector3(x, y, 0), Quaternion.identity);
+        cannonball.sfx = impactSfx;
+        cannonball.gameObject.layer = layer_id;
         SpriteRenderer renderer = cannonball.GetComponent<SpriteRenderer>();
         var playerRenderer = GetComponent<MeshRenderer>();
         var srcColor = playerRenderer.material.color;

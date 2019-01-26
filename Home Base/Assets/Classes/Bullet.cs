@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
-    public ImpactSFX script;
+    public ImpactSFX sfx;
     public Sprite crackedSprite;
     private bool _decaying = false;
     private bool _has_hit_floor = false;
@@ -50,6 +49,7 @@ public class Bullet : MonoBehaviour
             var spriteRenderer = col.gameObject.GetComponent<SpriteRenderer>();
             if (sqrSpeed > 300f || spriteRenderer.sprite == crackedSprite && gameblock.CanBeDamagedBy(this)) 
             {
+                sfx.PlaySoundeffects();
                 Destroy(col.gameObject, 0.05f);
             }
             else if (sqrSpeed > 50.0f)
