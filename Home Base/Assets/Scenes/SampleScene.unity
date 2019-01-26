@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -438,6 +439,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20237303dd88046769ac40cb3de0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impact:
+  - {fileID: 8300000, guid: b7af7878e70634cf78586b9e4624456c, type: 3}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1253,7 +1268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37d83ebce05ad74683fd3228dde9e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  browserStartMode: 4
+  browserStartMode: 0
   controllerHtml: {fileID: 4900000, guid: 0476e9f0ad149be498c4a7624e50b404, type: 3}
   autoScaleCanvas: 1
 --- !u!4 &1919819101
@@ -1287,6 +1302,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3248117397402321268, guid: db30cc34a227a0448a07d36af6282fb2,
+        type: 3}
+      propertyPath: script
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3248117397402321267, guid: db30cc34a227a0448a07d36af6282fb2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1347,11 +1367,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: adf024e7d882d694ca51bba2e7e55697, type: 2}
-    - target: {fileID: 3248117397402321268, guid: db30cc34a227a0448a07d36af6282fb2,
-        type: 3}
-      propertyPath: script
-      value: 
-      objectReference: {fileID: 519420034}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db30cc34a227a0448a07d36af6282fb2, type: 3}
 --- !u!114 &2138994121 stripped
@@ -1383,6 +1398,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3248117397402321268, guid: db30cc34a227a0448a07d36af6282fb2,
+        type: 3}
+      propertyPath: script
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3248117397402321267, guid: db30cc34a227a0448a07d36af6282fb2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1438,10 +1458,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3248117397402321268, guid: db30cc34a227a0448a07d36af6282fb2,
-        type: 3}
-      propertyPath: script
-      value: 
-      objectReference: {fileID: 519420034}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db30cc34a227a0448a07d36af6282fb2, type: 3}
