@@ -10,6 +10,7 @@ public class AirConsolerManager : MonoBehaviour
     List<int> player_ids = new List<int>();
     public CannonShoot redCannonShoot, blueCannonShoot;
     public BaseBuilder redBuilder, blueBuilder;
+    private bool redHasBuilt = false, blueHasBuilt = false;
 
     void Start()
     {
@@ -77,10 +78,18 @@ public class AirConsolerManager : MonoBehaviour
             if (player_id == 0)
             {
                 redBuilder.BuildBase(blocks, 9);
+                redHasBuilt = true;
             }
             else if (player_id == 1)
             {
                 blueBuilder.BuildBase(blocks, 8);
+                blueHasBuilt = true;
+            }
+            if(redHasBuilt && blueHasBuilt)
+            {
+                var gm = new GameMode();
+                gm.mode = "SHOOTING";
+                AirConsole.instance.Broadcast(gm);
             }
         }
     }
