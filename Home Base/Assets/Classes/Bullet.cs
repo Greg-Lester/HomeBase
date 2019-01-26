@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+
+    public ImpactSFX script;
     public Sprite crackedSprite;
     private bool _decaying = false;
     private bool _has_hit_floor = false;
@@ -43,8 +45,7 @@ public class Bullet : MonoBehaviour
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
         var v = rb.velocity;
         var gameblock = col.gameObject.GetComponent<GameBlock>();
-        if (gameblock != null)
-        {
+        if (gameblock != null) {
             var sqrSpeed = v.sqrMagnitude;
             var spriteRenderer = col.gameObject.GetComponent<SpriteRenderer>();
             if (sqrSpeed > 300f || spriteRenderer.sprite == crackedSprite && gameblock.CanBeDamagedBy(this)) 
@@ -61,6 +62,8 @@ public class Bullet : MonoBehaviour
         {
             v.y = 0;
             rb.velocity = v;
+
+          
         }
      }
 }
