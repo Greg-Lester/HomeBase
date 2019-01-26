@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\Classes\BaseBuilder.cs" />
     <Compile Include="Assets\Classes\Block.cs" />
+    <Compile Include="Assets\Classes\Bullet.cs" />
+    <Compile Include="Assets\Classes\CannonShoot.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/Greg/Documents/GGJ Home Base/Home Base/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -282,9 +284,6 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>/Users/Greg/Documents/GGJ Home Base/Home Base/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>/Users/Greg/Documents/GGJ Home Base/Home Base/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
@@ -293,9 +292,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/Greg/Documents/GGJ Home Base/Home Base/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>/Users/Greg/Documents/GGJ Home Base/Home Base/Library/PackageCache/com.unity.purchasing@2.0.3/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
