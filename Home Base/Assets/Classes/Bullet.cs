@@ -13,8 +13,8 @@ public class Bullet : MonoBehaviour
             Debug.Log("collision name = " + col.gameObject.name);
             if (col.gameObject.name == "Block(Clone)")
             {
-                Destroy(col.gameObject);
-                Destroy(this.gameObject);
+                //Destroy(col.gameObject);
+                //Destroy(this.gameObject);
             }
         }
     }
