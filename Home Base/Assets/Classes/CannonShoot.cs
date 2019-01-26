@@ -18,6 +18,11 @@ public class CannonShoot : MonoBehaviour
         float y = this.transform.position.y;
         GameObject cannonball = Instantiate(ProjectilePrefab, new Vector3(x, y, 0), Quaternion.identity);
         cannonball.layer = layer_id;
+        SpriteRenderer renderer = cannonball.GetComponent<SpriteRenderer>();
+        var playerRenderer = GetComponent<MeshRenderer>();
+        var srcColor = playerRenderer.material.color;
+        renderer.color = srcColor;
+
         Rigidbody2D rb = cannonball.GetComponent<Rigidbody2D>();
         float MAG = 0.08f;
         rb.velocity = new Vector3(dx* MAG, -dy * MAG, 0);
