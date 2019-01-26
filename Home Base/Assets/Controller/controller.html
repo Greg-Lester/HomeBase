@@ -18,6 +18,19 @@
       transform: scale(0.2);
       transform-origin: right;
     }
+    .header{
+      position: fixed;
+      background: darkgrey;
+      top:0;
+      width:100%;
+      left: 0;
+      right: 0;
+      padding: 5px;
+      font-size: 35px;
+      text-align: center;
+      font-family: monospace;
+      color: white;
+    }
   </style>
 
   <script type="text/javascript" src="https://hammerjs.github.io/dist/hammer.min.js"></script>
@@ -25,6 +38,9 @@
   <script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.7.0.js"></script>
 </head>
 <body>
+  <div class="header">
+    Not Connected
+  </div>
   <div class="arrow-wrapper">
     <div class="arrow">
       ⟹
@@ -40,6 +56,11 @@
       rotate: 0
     }
 
+    let player_colors = {
+        0: "red",
+        1: "blue"
+    }
+
     function update_transforms(){
       let translate = 'translate('+GLOBAL.touch_x+'px, '+GLOBAL.touch_y+'px)'
       let scale = 'scale('+GLOBAL.scale+')'
@@ -50,6 +71,22 @@
     }
     update_transforms();
     var air_console = new AirConsole();
+
+    let interval = setInterval(()=>{
+      let device_id = air_console.device_id;
+      let player_id = air_console.convertDeviceIdToPlayerNumber(device_id)
+      console.log(">>>>>", device_id, player_id)
+      if(player_id !== undefined){
+        let color = player_colors[player_id];
+        $('.header')
+          .text(color.toUpperCase() + " PLAYER")
+          .css("background", color)
+        $('.arrow')
+          .css("color", color)
+        GLOBAL.player_id = player_id;
+        clearInterval(interval)
+      }
+    },250);
 
     window.onerror = function myErrorHandler(errorMsg) {
       console.error(errorMsg);//or any message
@@ -96,13 +133,15 @@
       let theta = Math.atan2(dx, dy);
       console.log(theta)
       GLOBAL.rotate = 0.5*Math.PI - theta;
-      air_console.message(AirConsole.SCREEN, GLOBAL);
       update_transforms();
     });
 
     hammertime.on('panend', function() {
       GLOBAL.visibility = "hidden";
-      air_console.message(AirConsole.SCREEN, GLOBAL);
+      air_console.message(AirConsole.SCREEN, {
+        action:"shoot",
+        ...GLOBAL
+      });
       update_transforms();
     });
 
