@@ -1,19 +1,49 @@
 <head>
   <meta charset="UTF-8">
   <style>
-    html, body, .arrow-wrapper {
+    html, body, .wrapper{
       width:100%;
       height:100%;
       padding: 0;
       margin:0;
-      background:  radial-gradient(#333, black);
+      background:  radial-gradient(#111, black);
       overflow:hidden;
+      color: orange;
     }
-    .arrow-wrapper{
+    .build-area{
+      background: #e08a1f;
+      width:100vw;
+      height:100vw;
+      overflow: hidden;
+    }
+    .build-menu{
+      background: #444;
+      height: calc(100vh - 100vw - 45px);
+      width: 100vw;
+      padding:24px;
+    }
+    .hub, .component{
+      position: absolute;
+    }
+    .hub{
+      width: 40px;
+      height: 40px;
+      transform: translate(161px, 309px);
+    }
+    .floor{
+      width: 100vw;
+      height: 20px;
+      transform: translate(0, 348px);
+      background:black;
+    }
+    .component.block_2_1{
+        width: 80px;
+        height: 40px;
+        border-radius: 10%;
+        background: black;
     }
     .arrow{
       display:inline-block;
-      color: orange;
       font-size: 400px;
       transform: scale(0.2);
       transform-origin: right;
@@ -27,9 +57,27 @@
       right: 0;
       padding: 5px;
       font-size: 35px;
+      height: 45px;
       text-align: center;
       font-family: monospace;
       color: white;
+    }
+
+    .finished-button{
+      background: #000000;
+      border-radius: 5px;
+      padding: 8px 20px;
+      color: #ffffff;
+      display: inline-block;
+      font: normal 700 24px/1 "Calibri", sans-serif;
+      text-align: center;
+      text-shadow: 1px 1px #000000;
+      position: fixed;
+      width: 90vw;
+      left: 5vw;
+      right: 5vw;
+      bottom: 5vw;
+      box-sizing: border-box;
     }
   </style>
 
@@ -39,13 +87,29 @@
 </head>
 <body>
   <div class="header">
-    Not Connected
+    Waiting for P2...
   </div>
-  <div class="arrow-wrapper">
+  <div class="arrow-wrapper wrapper">
     <div class="arrow">
       ⟹
     </div>
   </div>
+
+  <div class="build-wrapper wrapper">
+    <div class="build-area">
+        <div class="hub">
+        </div>
+        <div class="floor"></div>
+    </div>
+    <div class="build-menu">
+      <div class="component block_2_1">
+      </div>
+      <div class="finished-button">
+        Commit to your home!
+      </div>
+    </div>
+  </div>
+
 
   <script>
     let GLOBAL = {
@@ -53,13 +117,31 @@
       touch_x: 0,
       touch_y: 0,
       scale: 1,
-      rotate: 0
+      rotate: 0,
     }
+    let BLOCK_ADDING = false;
 
     let player_colors = {
-        0: "red",
-        1: "blue"
+        0:{name:"red", color:"#C52828"},
+        1:{name:"blue", color:"#247BCF"}
     }
+
+    function update_gamemode({mode}){
+      if(!mode)return;
+      if(mode === "BUILDING"){
+        $('.build-wrapper').show();
+      }else{
+        $('.build-wrapper').hide();
+      }
+
+      if(mode==="SHOOTING"){
+        $('.arrow-wrapper').show();
+      }else{
+        $('.arrow-wrapper').hide();
+      }
+    }
+
+    update_gamemode({mode:"WAIT"});
 
     function update_transforms(){
       let translate = 'translate('+GLOBAL.touch_x+'px, '+GLOBAL.touch_y+'px)'
@@ -72,17 +154,24 @@
     update_transforms();
     var air_console = new AirConsole();
 
+    air_console.onMessage = (id, message)=>{
+      update_gamemode(message);
+    }
+
     let interval = setInterval(()=>{
       let device_id = air_console.device_id;
       let player_id = air_console.convertDeviceIdToPlayerNumber(device_id)
-      console.log(">>>>>", device_id, player_id)
       if(player_id !== undefined){
         let color = player_colors[player_id];
         $('.header')
-          .text(color.toUpperCase() + " PLAYER")
-          .css("background", color)
+          .text(color.name.toUpperCase() + " PLAYER")
+          .css("background", color.color)
+        $('.finished-button')
+          .css("background", color.color)
+        $('.hub')
+          .css("background", color.color)
         $('.arrow')
-          .css("color", color)
+          .css("color", color.color)
         GLOBAL.player_id = player_id;
         clearInterval(interval)
       }
@@ -98,7 +187,6 @@
 
     var myOptions = {};
     var elem = $('.arrow-wrapper')[0];
-    console.log(elem);
     var hammertime = new Hammer(elem, myOptions);
 
     $('html, body, .arrow-wrapper').each((i, e) => {
@@ -131,7 +219,6 @@
       GLOBAL.scale = mag_d / 400;
 
       let theta = Math.atan2(dx, dy);
-      console.log(theta)
       GLOBAL.rotate = 0.5*Math.PI - theta;
       update_transforms();
     });
@@ -140,11 +227,73 @@
       GLOBAL.visibility = "hidden";
       Navigator.vibrate && Navigator.vibrate(300)
       air_console.message(AirConsole.SCREEN, {
-        action:"shoot",
+        action:"SHOOT",
         ...GLOBAL
       });
       update_transforms();
     });
 
+    $('.build-menu').on('click', '.component', function(){
+      if(BLOCK_ADDING)return;
+      var $new =  $(this).clone();
+      $new.css("transform", "translate(161px, 161px)");
+      $new.appendTo(".build-area");
+      BLOCK_ADDING = true;
+      $new.ready(()=>{
+        var hm = new Hammer($new[0], {threshold: 0});
+        hm.on('panstart', ()=>{
+          BLOCK_ADDING = false;
+          let tx = parseInt(
+            $new.css("transform").split(",")[4]
+          );
+          let ty = parseInt(
+            $new.css("transform").split(",")[5]
+          );
+          $new.data("ox", tx);
+          $new.data("oy", ty);
+        });
+        hm.on('pan', ({deltaX, deltaY})=>{
+          var tx=deltaX+$new.data("ox");
+          var ty=deltaY+$new.data("oy");
+
+          $new.css("transform", "translate("+tx+"px, "+ty+"px)");
+        })
+        hm.on('panend', ({deltaX, deltaY})=>{
+          let tx = parseInt(
+            $new.css("transform").split(",")[4]
+          );
+          let ty = parseInt(
+            $new.css("transform").split(",")[5]
+          );
+          if(tx>300 || tx < -50 || ty > 330){
+            $new.remove();
+          }
+        })
+      })
+    })
+
+    $('.finished-button').click(()=>{
+      $('.build-menu *').remove();
+      $('.build-menu').text("Waiting for other player...");
+
+      console.log($('.build_area .component'));
+      var components = $('.build-area .component').map(function(){
+        let x = parseInt(
+          $(this).css("transform").split(",")[4]
+        );
+        let y = parseInt(
+          $(this).css("transform").split(",")[5]
+        );
+        let type = this.className;
+        return {
+          x,y,type
+        }
+      }).get();
+      console.log(components);
+      air_console.message(AirConsole.SCREEN, {
+        action: "BUILD",
+        components
+      });
+    })
   </script>
 </body>

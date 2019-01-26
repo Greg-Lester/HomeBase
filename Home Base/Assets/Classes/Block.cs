@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Block {
-    public int x;
-    public int y;
+    public float x;
+    public float y;
 
-    public Block(int x, int y) {
+    public Block(float x, float y) {
         this.x = x;
         this.y = y;
     }
