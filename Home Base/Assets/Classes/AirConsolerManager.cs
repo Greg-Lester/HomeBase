@@ -8,7 +8,7 @@ public class AirConsolerManager : MonoBehaviour
 {
 
     List<int> player_ids = new List<int>();
-    public CannonShoot cannonShoot;
+    public CannonShoot redCannonShoot, blueCannonShoot;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class AirConsolerManager : MonoBehaviour
 
     void OnConnect(int from)
     {
-        Debug.Log(from + " is connected");
+        Debug.Log("DEVICE ID "+from + " is connected");
         player_ids.Add(from);
 
         if(player_ids.Count == 2)
@@ -36,7 +36,14 @@ public class AirConsolerManager : MonoBehaviour
         float dx = (float)data["dx"];
         float dy = (float)data["dy"];
         Debug.Log("dx:"+dx + " dy:" + dy);
-        cannonShoot.Shoot(0, 0, dx, dy);
+        var player_id = AirConsole.instance.ConvertDeviceIdToPlayerNumber(from);
+        if(player_id == 0)
+        {
+            redCannonShoot.Shoot(dx, dy, 9);
+        }else if (player_id == 1)
+        {
+            blueCannonShoot.Shoot(dx, dy, 8);
+        }
     }
     // Update is called once per frame
     void Update()

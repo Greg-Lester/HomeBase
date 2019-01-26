@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4520540301053867335}
   - component: {fileID: 3020933181892217248}
   - component: {fileID: 3995722699654162615}
+  - component: {fileID: 8053441563462979608}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8885701941971024422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.527, y: 6.507, z: 0}
-  m_LocalScale: {x: 0.0676039, y: 0.0676039, z: 0.014264423}
+  m_LocalPosition: {x: -15.635, y: 6.615, z: 0}
+  m_LocalScale: {x: 0.04644388, y: 0.04644388, z: 0.009799658}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,7 +98,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -112,7 +113,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 8885701941971024422}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e3e773b14617f6e4aab98836865c1e59, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -131,3 +132,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2430ca5d37deb42579d24d0ef7d4de7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8053441563462979608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8885701941971024422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb9291566e964a3abdade4cae459137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoot:
+  - {fileID: 8300000, guid: 48e1e06447dfc4733b7ea74b8af61f14, type: 3}
+  - {fileID: 8300000, guid: 7802e5d444c3e469c97c4201eaeeece0, type: 3}
+  - {fileID: 8300000, guid: abffbfde0bdf54733b6cc1bfdd0c162e, type: 3}
+  - {fileID: 8300000, guid: 006cf538a234f479faf64beb845cd6a3, type: 3}
+  - {fileID: 8300000, guid: eb6e6f34b19894efd913a35137e06743, type: 3}

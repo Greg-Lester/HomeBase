@@ -4,20 +4,24 @@ using System.Collections;
 public class CannonShoot : MonoBehaviour
 {
     public GameObject ProjectilePrefab;
+    public CannonSFX script;
 
 
     // Use this for initialization
     void Start()
     {
-        Shoot(0, 0, 6, 8);
     }
 
-    public void Shoot(float x, float y, float dx, float dy)
+    public void Shoot(float dx, float dy, int layer_id)
     {
+        float x = this.transform.position.x;
+        float y = this.transform.position.y;
         GameObject cannonball = Instantiate(ProjectilePrefab, new Vector3(x, y, 0), Quaternion.identity);
+        cannonball.layer = layer_id;
         Rigidbody2D rb = cannonball.GetComponent<Rigidbody2D>();
-        float MAG = 0.3f;
+        float MAG = 0.05f;
         rb.velocity = new Vector3(dx* MAG, -dy * MAG, 0);
+        script.PlaySoundeffects();
     }
 
 }

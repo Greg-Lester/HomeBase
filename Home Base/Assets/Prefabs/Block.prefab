@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 212871182054889646}
   - component: {fileID: 50164175023939512}
   - component: {fileID: 61194627291319122}
+  - component: {fileID: 7829626977029552099}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -96,7 +97,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -128,3 +129,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.6, y: 5.4}
   m_EdgeRadius: 0
+--- !u!114 &7829626977029552099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531043531113064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37cb364cffbed4a4699621e30d22350a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
