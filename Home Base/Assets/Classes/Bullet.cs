@@ -9,8 +9,7 @@ public class Bullet : MonoBehaviour
  
  
         {
-            //Check collision name
-            Debug.Log("collision name = " + col.gameObject.name);
+
             if (col.gameObject.name == "Block(Clone)")
             {
                 //Destroy(col.gameObject);
