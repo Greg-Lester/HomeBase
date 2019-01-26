@@ -10,6 +10,7 @@
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # [Aa]ssets/AssetStoreTools*
+Assembly-CSharp-Editor.csproj
 
 # Visual Studio cache directory
 .vs/
