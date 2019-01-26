@@ -8,7 +8,10 @@ public class BaseBuilder : MonoBehaviour
 
    public void BuildBase(List<Block> blocks, int layer_id){
         foreach(Block b in blocks)
-            Instantiate(WallPrefab, new Vector3(b.x + this.transform.position.x, b.y + this.transform.position.y, 0), Quaternion.identity);
+        {
+            var w = Instantiate(WallPrefab, new Vector3(b.x + this.transform.position.x, b.y + this.transform.position.y, 0), Quaternion.identity);
+            w.layer = layer_id;
+        }
 
     }
 

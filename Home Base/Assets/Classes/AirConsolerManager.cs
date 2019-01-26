@@ -77,12 +77,12 @@ public class AirConsolerManager : MonoBehaviour
             }
             if (player_id == 0)
             {
-                redBuilder.BuildBase(blocks, 9);
+                redBuilder.BuildBase(blocks, 8);
                 redHasBuilt = true;
             }
             else if (player_id == 1)
             {
-                blueBuilder.BuildBase(blocks, 8);
+                blueBuilder.BuildBase(blocks, 9);
                 blueHasBuilt = true;
             }
             if(redHasBuilt && blueHasBuilt)
