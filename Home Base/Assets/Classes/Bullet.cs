@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public Sprite crackedSprite;
     private bool _decaying = false;
     private bool _has_hit_floor = false;
     void Update() {
@@ -36,16 +37,28 @@ public class Bullet : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col) 
     {
-        if (col.gameObject.name == "Block(Clone)" || col.gameObject.name == "Block")
+
+        this._decaying = true;
+        this._has_hit_floor = true;
+        Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+        var v = rb.velocity;
+        var gameblock = col.gameObject.GetComponent<GameBlock>();
+        if (gameblock != null)
         {
-            Destroy(col.gameObject);
+            var sqrSpeed = v.sqrMagnitude;
+            var spriteRenderer = col.gameObject.GetComponent<SpriteRenderer>();
+            if (sqrSpeed > 300f || spriteRenderer.sprite == crackedSprite && gameblock.CanBeDamagedBy(this)) 
+            {
+                Destroy(col.gameObject, 0.05f);
+            }
+            else if (sqrSpeed > 50.0f)
+            {
+                gameblock.MarkAsDamagedBy(this);
+                spriteRenderer.sprite = crackedSprite;
+            }
         }
         if (col.gameObject.name == "Floor")
         {
-            this._decaying = true;
-            this._has_hit_floor = true;
-            Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
-            var v = rb.velocity;
             v.y = 0;
             rb.velocity = v;
         }

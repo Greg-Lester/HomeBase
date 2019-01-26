@@ -138,6 +138,7 @@
 
     hammertime.on('panend', function() {
       GLOBAL.visibility = "hidden";
+      Navigator.vibrate && Navigator.vibrate(300)
       air_console.message(AirConsole.SCREEN, {
         action:"shoot",
         ...GLOBAL

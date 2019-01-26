@@ -19,8 +19,9 @@ public class CannonShoot : MonoBehaviour
         GameObject cannonball = Instantiate(ProjectilePrefab, new Vector3(x, y, 0), Quaternion.identity);
         cannonball.layer = layer_id;
         Rigidbody2D rb = cannonball.GetComponent<Rigidbody2D>();
-        float MAG = 0.05f;
+        float MAG = 0.08f;
         rb.velocity = new Vector3(dx* MAG, -dy * MAG, 0);
+        
         script.PlaySoundeffects();
     }
 
