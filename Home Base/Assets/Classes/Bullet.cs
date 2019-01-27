@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     public Sprite crackedSprite;
     private bool _decaying = false;
     private bool _has_hit_floor = false;
+    public ParticleSystem Explosion;
+
     void Update() {
         if (_decaying)
         {
@@ -51,6 +53,7 @@ public class Bullet : MonoBehaviour
             {
                 sfx.PlaySoundeffects();
                 Destroy(col.gameObject, 0.05f);
+                Instantiate(Explosion, col.gameObject.transform.position, Quaternion.identity);
             }
             else if (sqrSpeed > 50.0f)
             {
