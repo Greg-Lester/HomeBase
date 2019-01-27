@@ -38,6 +38,7 @@
       width: 40px;
       height: 40px;
       transform: translate(161px, 309px);
+      background: gray;
     }
     .floor{
       width: 100vw;
@@ -163,7 +164,7 @@
       }
     }
 
-    update_gamemode({mode:"WAIT"});
+    update_gamemode({mode:"WAITING"});
 
     function update_transforms(){
       let translate = 'translate('+GLOBAL.touch_x+'px, '+GLOBAL.touch_y+'px)'
@@ -211,7 +212,7 @@
     var elem = $('.arrow-wrapper')[0];
     var hammertime = new Hammer(elem, myOptions);
 
-    $('html, body, .arrow-wrapper').each((i, e) => {
+    $('html, body, .wrapper').each((i, e) => {
       e.addEventListener('touchmove', function(eve) {
           eve.preventDefault();
       }, false);
@@ -262,7 +263,7 @@
       $new.appendTo(".build-area");
       BLOCK_ADDING = true;
       $new.ready(()=>{
-        var hm = new Hammer($new[0], {threshold: 0});
+        var hm = new Hammer($new[0], {});
         hm.on('panstart', ()=>{
           BLOCK_ADDING = false;
           let tx = parseInt(
@@ -273,11 +274,11 @@
           );
           $new.data("ox", tx);
           $new.data("oy", ty);
+          console.log(tx, ty)
         });
         hm.on('pan', ({deltaX, deltaY})=>{
           var tx=deltaX+$new.data("ox");
           var ty=deltaY+$new.data("oy");
-
           $new.css("transform", "translate("+tx+"px, "+ty+"px)");
         })
         hm.on('panend', ({deltaX, deltaY})=>{
@@ -287,7 +288,7 @@
           let ty = parseInt(
             $new.css("transform").split(",")[5]
           );
-          if(tx>300 || tx < -50 || ty > 330){
+          if(ty > 330){
             $new.remove();
           }
         })

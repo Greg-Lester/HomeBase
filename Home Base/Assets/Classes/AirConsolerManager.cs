@@ -65,7 +65,7 @@ public class AirConsolerManager : MonoBehaviour
             {
                 float x = (int)comp["x"];
                 float y = (int)comp["y"];
-                x -= 161f;
+                x -= 141f;
                 y -= 309f;
                 x /= 40f;
                 y /= 40f;
