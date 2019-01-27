@@ -59,6 +59,7 @@ public class Bullet : MonoBehaviour
             {
                 gameblock.MarkAsDamagedBy(this);
                 spriteRenderer.sprite = crackedSprite;
+                sfx.PlayDamagedSoundeffects();
             }
         }
         if (col.gameObject.name == "Floor")

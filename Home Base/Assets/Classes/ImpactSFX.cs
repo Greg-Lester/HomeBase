@@ -6,7 +6,8 @@ public class ImpactSFX : MonoBehaviour
 {
     private AudioSource audioSource;
     public AudioClip[] impact;
-    private AudioClip impactClip;
+    public AudioClip[] damaged;
+
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -14,12 +15,15 @@ public class ImpactSFX : MonoBehaviour
     public void PlaySoundeffects()
     {
         int index = Random.Range(0, impact.Length);
-        impactClip = impact[index];
+        var impactClip = impact[index];
         audioSource.clip = impactClip;
         audioSource.Play();
     }
-    void Update()
+    public void PlayDamagedSoundeffects()
     {
-
+        int index = Random.Range(0, damaged.Length);
+        var damagedClip = damaged[index];
+        audioSource.clip = damagedClip;
+        audioSource.Play();
     }
 }
