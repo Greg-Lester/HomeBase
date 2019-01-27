@@ -22,7 +22,16 @@
       width: 100vw;
       padding:24px;
     }
+    .build-menu .component{
+      display: inline-block;
+      padding:3px;
+    }
+
     .hub, .component{
+      box-sizing: border-box;
+    }
+
+    .build-area .hub,.build-area .component{
       position: absolute;
     }
     .hub{
@@ -41,6 +50,18 @@
         height: 40px;
         border-radius: 10%;
         background: black;
+    }
+    .component.block_1_2{
+        width: 40px;
+        height: 80px;
+        border-radius: 10%;
+        background: black;
+    }
+    .component.window_2_1{
+        width: 80px;
+        height: 40px;
+        border-radius: 10%;
+        border: 5px black solid;
     }
     .arrow{
       display:inline-block;
@@ -102,8 +123,9 @@
         <div class="floor"></div>
     </div>
     <div class="build-menu">
-      <div class="component block_2_1">
-      </div>
+      <div class="component block_2_1"></div>
+      <div class="component window_2_1"></div>
+      <div class="component block_1_2"></div>
       <div class="finished-button">
         Commit to your home!
       </div>

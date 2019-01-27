@@ -155,4 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70d28f7333eb4e0c9221fec7fc419d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WallPrefab: {fileID: 1531043531113064, guid: 9f954cef3e7d447bbb1dac2948108561, type: 3}
+  Block2_1: {fileID: 1531043531113064, guid: 9f954cef3e7d447bbb1dac2948108561, type: 3}
+  Block1_2: {fileID: 1531043531113064, guid: 6e626c0ef2d81d242834be86a8063286, type: 3}
+  Window2_1: {fileID: 1531043531113064, guid: 071b3c1165a91e4488e1780477375e14, type: 3}
