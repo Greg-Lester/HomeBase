@@ -9,6 +9,7 @@ public class ImpactSFX : MonoBehaviour
     public AudioClip[] damaged;
     public AudioClip[] floor;
     public AudioClip[] characterHit;
+    public CameraShake cameraShake;
 
     void Start()
     {
@@ -41,5 +42,6 @@ public class ImpactSFX : MonoBehaviour
         var characterHitClip = characterHit[index];
         audioSource.clip = characterHitClip;
         audioSource.Play();
+        cameraShake.shakeDuration = 0.6f;
     }
 }
