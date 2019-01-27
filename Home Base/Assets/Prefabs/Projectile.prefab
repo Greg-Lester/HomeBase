@@ -132,8 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2430ca5d37deb42579d24d0ef7d4de7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  script: {fileID: 0}
+  sfx: {fileID: 0}
   crackedSprite: {fileID: 21300000, guid: 31348269f9c88b04e9586a13307194f0, type: 3}
+  Explosion: {fileID: 4185565953356779751, guid: 828bf02b991a443e9baeef18044443f7,
+    type: 3}
 --- !u!114 &8053441563462979608
 MonoBehaviour:
   m_ObjectHideFlags: 0
