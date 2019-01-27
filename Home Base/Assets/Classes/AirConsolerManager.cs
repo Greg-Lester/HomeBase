@@ -73,7 +73,7 @@ public class AirConsolerManager : MonoBehaviour
 
                 string type = (string)comp["type"];
                 Debug.Log(x + ", " + y + ": " + type);
-                blocks.Add(new Block(x, y));
+                blocks.Add(new Block(x, y, type));
             }
             if (player_id == 0)
             {

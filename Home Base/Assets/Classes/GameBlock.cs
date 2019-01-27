@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameBlock : MonoBehaviour
 {
-    public int player_id = -1;
+    public Sprite Cracked;
     private List<Bullet> damagedBy = new List<Bullet>();
     // Start is called before the first frame update
     void Start()
