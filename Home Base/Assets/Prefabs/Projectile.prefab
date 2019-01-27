@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfx: {fileID: 0}
-  crackedSprite: {fileID: 21300000, guid: 31348269f9c88b04e9586a13307194f0, type: 3}
   Explosion: {fileID: 4185565953356779751, guid: 828bf02b991a443e9baeef18044443f7,
     type: 3}
 --- !u!114 &8053441563462979608
