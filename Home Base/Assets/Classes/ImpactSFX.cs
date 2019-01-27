@@ -44,11 +44,4 @@ public class ImpactSFX : MonoBehaviour
         audioSource.Play();
         cameraShake.shakeDuration = 0.6f;
     }
-    public void PlayBlockCollideSound()
-    {
-        int index = Random.Range(0, blockCollideSound.Length);
-        var blockCollideSoundClip = blockCollideSound[index];
-        audioSource.clip = blockCollideSoundClip;
-        audioSource.Play();
-    }
 }

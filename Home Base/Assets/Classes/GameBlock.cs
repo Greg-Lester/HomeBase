@@ -8,7 +8,7 @@ public class GameBlock : MonoBehaviour
     private bool _has_collided = false;
     public AudioClip spawnSound;
     private AudioSource audioSource;
-    public ImpactSFX sfx;
+    public AudioClip[] collideSound;
 
     private List<Bullet> damagedBy = new List<Bullet>();
     // Start is called before the first frame update
@@ -33,8 +33,15 @@ public class GameBlock : MonoBehaviour
         if (!_has_collided)
         {
             _has_collided = true;
-            audioSource.clip = blockCollideSound;
-            audioSource.Play();
+            PlayBlockCollideSound();
         }
+    }
+
+    public void PlayBlockCollideSound()
+    {
+        int index = Random.Range(0, collideSound.Length);
+        var blockCollideSoundClip = collideSound[index];
+        audioSource.clip = blockCollideSoundClip;
+        audioSource.Play();
     }
 }
