@@ -9,6 +9,7 @@ public class ImpactSFX : MonoBehaviour
     public AudioClip[] damaged;
     public AudioClip[] floor;
     public AudioClip[] characterHit;
+    public AudioClip[] blockCollideSound;
 
     void Start()
     {
@@ -40,6 +41,13 @@ public class ImpactSFX : MonoBehaviour
         int index = Random.Range(0, characterHit.Length);
         var characterHitClip = characterHit[index];
         audioSource.clip = characterHitClip;
+        audioSource.Play();
+    }
+    public void PlayBlockCollideSound()
+    {
+        int index = Random.Range(0, blockCollideSound.Length);
+        var blockCollideSoundClip = blockCollideSound[index];
+        audioSource.clip = blockCollideSoundClip;
         audioSource.Play();
     }
 }

@@ -7,8 +7,8 @@ public class GameBlock : MonoBehaviour
     public Sprite Cracked;
     private bool _has_collided = false;
     public AudioClip spawnSound;
-    public AudioClip blockCollideSound;
     private AudioSource audioSource;
+    public ImpactSFX sfx;
 
     private List<Bullet> damagedBy = new List<Bullet>();
     // Start is called before the first frame update

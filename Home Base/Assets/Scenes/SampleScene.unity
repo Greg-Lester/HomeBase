@@ -292,6 +292,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 21202c9becbbb45859fea1cfb639c2fc, type: 3}
   - {fileID: 8300000, guid: 101db1f1767d54e90bf293dcd46729e2, type: 3}
   - {fileID: 8300000, guid: cb9201de1b85e4e769e33b39196ced87, type: 3}
+  blockCollideSound:
+  - {fileID: 8300000, guid: 0478e1330853543b7a25943628f89eb4, type: 3}
+  - {fileID: 8300000, guid: f98f9b4660b774314ae4baacf9f9cee1, type: 3}
+  - {fileID: 8300000, guid: 60d2c2cd6518f45f4959d955cf39ed42, type: 3}
+  - {fileID: 8300000, guid: 3c8ef028a97e345ee9ecb56ff2f7fc7f, type: 3}
+  - {fileID: 8300000, guid: 1bce2fccc23324ef6a8c36e2510adffd, type: 3}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +503,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
