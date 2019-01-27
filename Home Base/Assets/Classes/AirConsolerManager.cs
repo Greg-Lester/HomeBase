@@ -25,10 +25,10 @@ public class AirConsolerManager : MonoBehaviour
 
     void OnConnect(int from)
     {
-        Debug.Log("DEVICE ID "+from + " is connected");
+        Debug.Log("DEVICE ID " + from + " is connected");
         player_ids.Add(from);
 
-        if(player_ids.Count == 2)
+        if (player_ids.Count == 2)
         {
             Debug.Log("STARTING");
             AirConsole.instance.SetActivePlayers(2);
@@ -85,7 +85,7 @@ public class AirConsolerManager : MonoBehaviour
                 blueBuilder.BuildBase(blocks, 9);
                 blueHasBuilt = true;
             }
-            if(redHasBuilt && blueHasBuilt)
+            if (redHasBuilt && blueHasBuilt)
             {
                 var gm = new GameMode();
                 gm.mode = "SHOOTING";
@@ -93,9 +93,5 @@ public class AirConsolerManager : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+  
