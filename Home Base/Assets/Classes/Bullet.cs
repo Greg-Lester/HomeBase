@@ -41,7 +41,6 @@ public class Bullet : MonoBehaviour
     {
 
         this._decaying = true;
-        this._has_hit_floor = true;
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
         var v = rb.velocity;
         var gameblock = col.gameObject.GetComponent<GameBlock>();
@@ -66,8 +65,18 @@ public class Bullet : MonoBehaviour
         {
             v.y = 0;
             rb.velocity = v;
+            if (!_has_hit_floor)
+            {
+                sfx.PlayFloorSoundeffects();
+                this._has_hit_floor = true;
+            }
+        }
 
-          
+        var bb = col.gameObject.GetComponent<BaseBuilder>();
+        if (bb != null)
+        {
+            sfx.PlayCharacterHitSoundeffects();
+            bb.onPlayerWin();
         }
      }
 }

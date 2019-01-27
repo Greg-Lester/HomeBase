@@ -7,7 +7,10 @@ public class BaseBuilder : MonoBehaviour
     public GameObject Block2_1;
     public GameObject Block1_2;
     public GameObject Window2_1;
-
+    public void onPlayerWin()
+    {
+        //TODO
+    }
     public void BuildBase(List<Block> blocks, int layer_id){
         foreach(Block b in blocks)
         {
